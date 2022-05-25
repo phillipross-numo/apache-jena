@@ -10,7 +10,7 @@ export DOCKER_CMD := "docker container run --rm -it"
 export VOL_NAME := "apache-jena"
 export M2_REPO := "/root/.m2/repository"
 export BLD_DIR := "/usr/src/build"
-export IMG := "llsem-ubuntu-maven"
+export IMG := "triple-graph-ubuntu-maven"
 
 default:
   @echo "Invoke just --list to see a list of possible recipes to run"
