@@ -6,7 +6,6 @@
 
 export JAVA_VER_DISTRO_11 := "11.0.16.1-zulu"
 export JAVA_VER_DISTRO_17 := "17.0.4.1-zulu"
-export JAVA_VER_DISTRO_18 := "18.0.2.1-zulu"
 export JAVA_VER_DISTRO_19 := "19-zulu"
 export DOCKER_CMD := "docker container run --rm -it"
 export VOL_NAME := "apache-jena"
@@ -29,11 +28,6 @@ clean-17:
   sdk use java ${JAVA_VER_DISTRO_17}
   mvn clean
 
-clean-18:
-  #!/usr/bin/env bash -l
-  sdk use java ${JAVA_VER_DISTRO_18}
-  mvn clean
-
 clean-19:
   #!/usr/bin/env bash -l
   sdk use java ${JAVA_VER_DISTRO_19}
@@ -49,11 +43,6 @@ clean-install-11: clean-11
 clean-install-17: clean-17
   #!/usr/bin/env bash -l
   sdk use java ${JAVA_VER_DISTRO_17}
-  mvn install
-
-clean-install-18: clean-18
-  #!/usr/bin/env bash -l
-  sdk use java ${JAVA_VER_DISTRO_18}
   mvn install
 
 clean-install-19: clean-19
@@ -73,11 +62,6 @@ verify-17:
   sdk use java ${JAVA_VER_DISTRO_17}
   mvn verify
 
-verify-18:
-  #!/usr/bin/env bash -l
-  sdk use java ${SDKMAN_JAVA_8}
-  mvn verify
-
 verify-19:
   #!/usr/bin/env bash -l
   sdk use java ${JAVA_VER_DISTRO_19}
@@ -95,11 +79,6 @@ dev-verify-17:
   sdk use java ${JAVA_VER_DISTRO_17}
   mvn -Pdev verify
 
-dev-verify-18:
-  #!/usr/bin/env bash -l
-  sdk use java ${JAVA_VER_DISTRO_18}
-  mvn -Pdev verify
-
 dev-verify-19:
   #!/usr/bin/env bash -l
   sdk use java ${JAVA_VER_DISTRO_19}
@@ -113,9 +92,6 @@ docker-clean-11:
 docker-clean-17:
   ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn clean
 
-docker-clean-18:
-  ${DOCKER_CMD} -v ${VOL_NAME}-18:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:18" mvn clean
-
 docker-clean-19:
   ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn clean
 
@@ -126,9 +102,6 @@ docker-clean-install-11: docker-clean-11
 
 docker-clean-install-17: docker-clean-17
   ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn install
-
-docker-clean-install-18: docker-clean-18
-  ${DOCKER_CMD} -v ${VOL_NAME}-18:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:18" mvn install
 
 docker-clean-install-19: docker-clean-19
   ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn install
@@ -141,9 +114,6 @@ docker-verify-11:
 docker-verify-17:
   ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn verify
 
-docker-verify-18:
-  ${DOCKER_CMD} -v ${VOL_NAME}-18:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:18" mvn verify
-
 docker-verify-19:
   ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn verify
 
@@ -154,9 +124,6 @@ docker-dev-verify-11:
 
 docker-dev-verify-17:
   ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn -Pdev verify
-
-docker-dev-verify-18:
-  ${DOCKER_CMD} -v ${VOL_NAME}-18:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:18" mvn -Pdev verify
 
 docker-dev-verify-19:
   ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn -Pdev verify
