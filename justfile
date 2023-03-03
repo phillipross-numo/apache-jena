@@ -98,13 +98,13 @@ docker-clean-19:
 docker-clean-install: docker-clean-install-11
 
 docker-clean-install-11: docker-clean-11
-  ${DOCKER_CMD} -v ${VOL_NAME}-11:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:11" mvn -pl \!:jena-fuseki-ui install
+  ${DOCKER_CMD} -v ${VOL_NAME}-11:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:11" mvn install
 
 docker-clean-install-17: docker-clean-17
-  ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn -pl \!:jena-fuseki-ui install
+  ${DOCKER_CMD} -v ${VOL_NAME}-17:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:17" mvn install
 
 docker-clean-install-19: docker-clean-19
-  ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn -pl \!:jena-fuseki-ui install
+  ${DOCKER_CMD} -v ${VOL_NAME}-19:"${M2_REPO}" -v "$(pwd):${BLD_DIR}" -w ${BLD_DIR} "${IMG}:19" mvn install
 
 docker-verify: docker-verify-11
 
